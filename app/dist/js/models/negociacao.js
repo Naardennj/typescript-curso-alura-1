@@ -5,6 +5,14 @@ export class Negociacao {
         this.valor = valor;
     }
     ;
+    static criaDe(dataString, quantidadeString, valorString) {
+        const exp = /-/g;
+        const date = new Date(dataString.replace(exp, ','));
+        const quantidade = parseInt(quantidadeString);
+        const valor = parseFloat(valorString);
+        return new Negociacao(date, quantidade, valor);
+    }
+    ;
     get volume() {
         return this.quantidade * this.valor;
     }
@@ -14,13 +22,12 @@ export class Negociacao {
         return this._data;
     }
     ;
-    static criaDe(dataString, quantidadeString, valorString) {
-        const exp = /-/g;
-        const date = new Date(dataString.replace(exp, ','));
-        const quantidade = parseInt(quantidadeString);
-        const valor = parseFloat(valorString);
-        return new Negociacao(date, quantidade, valor);
+    paraTexto() {
+        return `
+        Data: ${this.data},
+        Quantidade: ${this.quantidade},
+        Valor: ${this.valor}
+    `;
     }
-    ;
 }
 ;

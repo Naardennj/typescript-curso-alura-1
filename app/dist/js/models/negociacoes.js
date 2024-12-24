@@ -9,6 +9,8 @@ export class Negociacoes {
     lista() {
         return this.negocicoes;
     }
-    ;
+    paraTexto() {
+        return JSON.stringify(this.negocicoes, null, 2);
+    }
 }
 ;
